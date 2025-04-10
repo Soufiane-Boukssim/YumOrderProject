@@ -50,6 +50,31 @@ public class RestaurantServiceImplementation implements RestaurantService {
         return false;
     }
 
+    @Override
+    public RestaurantOutputDtoWithAddress updateRestaurantById(Long id, RestaurantInputDtoWithAddress restaurantInputDtoWithAddress) {
+        Restaurant existingRestaurant = restaurantRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Restaurant avec l'ID " + id + " non trouvé"));
+
+        List<String> errorMessages = validateRestaurantDuplicates(restaurantInputDtoWithAddress);
+
+        if (!errorMessages.isEmpty()) {
+            throw new IllegalArgumentException(String.join(", ", errorMessages));
+        }
+
+        Restaurant updatedRestaurant = restaurantMapper.toEntity(restaurantInputDtoWithAddress);
+        existingRestaurant.setName(updatedRestaurant.getName());
+        existingRestaurant.setDescription(updatedRestaurant.getDescription());
+        existingRestaurant.setPhone(updatedRestaurant.getPhone());
+        existingRestaurant.setEmail(updatedRestaurant.getEmail());
+        existingRestaurant.setWebsite(updatedRestaurant.getWebsite());
+
+        if (updatedRestaurant.getAddress() != null) {
+            existingRestaurant.setAddress(updatedRestaurant.getAddress());
+        }
+
+        Restaurant savedRestaurant = restaurantRepository.save(existingRestaurant);
+
+        return restaurantMapper.toDto(savedRestaurant);
+    }
 
 
 

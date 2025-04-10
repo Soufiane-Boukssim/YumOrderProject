@@ -29,4 +29,9 @@ public class RestaurantController {
         return restaurantService.deleteRestaurantById(id);
     }
 
+    @PutMapping("/update/byId/{id}")
+    public RestaurantOutputDtoWithAddress updateRestaurantById(@PathVariable Long id,@RequestBody RestaurantInputDtoWithAddress restaurantInputDtoWithAddress){
+        return restaurantService.updateRestaurantById(id,restaurantInputDtoWithAddress);
+    }
+
 }

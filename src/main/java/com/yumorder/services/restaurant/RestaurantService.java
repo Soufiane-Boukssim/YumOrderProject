@@ -9,6 +9,6 @@ public interface RestaurantService {
     RestaurantOutputDtoWithAddress addRestaurant(RestaurantInputDtoWithAddress restaurantInputDtoWithAddress);
     List<RestaurantOutputDtoWithAddress> getAllRestaurants();
     Boolean deleteRestaurantById(Long id);
-    RestaurantOutputDtoWithAddress updateRestaurant(Long id,RestaurantInputDtoWithAddress restaurantInputDtoWithAddress);
+    RestaurantOutputDtoWithAddress updateRestaurantById(Long id,RestaurantInputDtoWithAddress restaurantInputDtoWithAddress);
 
 }
