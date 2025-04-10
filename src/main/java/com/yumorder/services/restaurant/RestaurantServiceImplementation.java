@@ -41,6 +41,16 @@ public class RestaurantServiceImplementation implements RestaurantService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Boolean deleteRestaurantById(Long id) {
+        if (restaurantRepository.existsById(id)) {
+            restaurantRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+
 
 
     private List<String> validateRestaurantDuplicates(RestaurantInputDtoWithAddress restaurantInputDtoWithAddress) {

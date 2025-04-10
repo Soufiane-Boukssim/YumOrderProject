@@ -24,4 +24,9 @@ public class RestaurantController {
         return restaurantService.getAllRestaurants();
     }
 
+    @DeleteMapping("/delete/byId/{id}")
+    public Boolean deleteRestaurantById(@PathVariable Long id){
+        return restaurantService.deleteRestaurantById(id);
+    }
+
 }
