@@ -21,5 +21,16 @@ public class AddressServiceImplementation implements AddressService {
         );
     }
 
-
+    public boolean addressExistsAndIdNot(AddressInputDto address, Long id) {
+        return addressRepository.existsByCountryAndStateAndCityAndStreetAndZipCodeAndLatitudeAndLongitudeAndIdNot(
+                address.getCountry(),
+                address.getState(),
+                address.getCity(),
+                address.getStreet(),
+                address.getZipCode(),
+                address.getLatitude(),
+                address.getLongitude(),
+                id  // Exclure l'ID
+        );
+    }
 }

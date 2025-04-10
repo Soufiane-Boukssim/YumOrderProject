@@ -8,4 +8,16 @@ import org.springframework.stereotype.Repository;
 public interface AddressRepository extends JpaRepository<Address, Long> {
     boolean existsByCountryAndStateAndCityAndStreetAndZipCodeAndLatitudeAndLongitude(
             String country, String state, String city, String street, String zipCode, double latitude, double longitude);
+
+    boolean existsByCountryAndStateAndCityAndStreetAndZipCodeAndLatitudeAndLongitudeAndIdNot(
+            String country,
+            String state,
+            String city,
+            String street,
+            String zipCode,
+            Double latitude,
+            Double longitude,
+            Long id
+    );
+
 }

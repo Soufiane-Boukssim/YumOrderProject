@@ -9,4 +9,10 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
     boolean existsByName(String name);
     boolean existsByWebsite(String website);
 
+
+    boolean existsByEmailAndIdNot(String email, Long id);
+    boolean existsByPhoneAndIdNot(String phone, Long id);
+    boolean existsByNameAndIdNot(String name, Long id);
+    boolean existsByWebsiteAndIdNot(String website, Long id);
+
 }

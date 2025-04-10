@@ -18,6 +18,7 @@ public class Address {
     @Column(nullable = false)
     private String street;
     @Column(nullable = false)
+//    @Column(name = "zip_code", nullable = false)
     private String zipCode;
     @Column(nullable = false)
     private double latitude;
